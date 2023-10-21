@@ -1,0 +1,23 @@
+---
+- hosts: alertmanager
+  become: yes
+  vars:
+    - role_path: /home/ali/monitoring_tools_setup/roles/alertmanager
+  roles:
+    - roles/alertmanager
+
+- hosts: node_exporter
+  become: yes
+  roles:
+    - roles/prometheus_node_exporter
+
+- hosts: prometheus
+  become: yes
+  roles:
+    - roles/prometheus
+
+- hosts: grafana
+  become: yes
+  roles:
+    - roles/grafana
+...

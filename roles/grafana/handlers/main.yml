@@ -1,0 +1,13 @@
+---
+- name: "Restart the Grafana service."
+  service:
+    name: grafana-server
+    state: restarted
+  listen: restart_grafana
+
+- name: Reload firewalld service
+  service:
+    name: firewalld
+    state: reloaded
+    enabled: yes
+  listen: reload_firewalld

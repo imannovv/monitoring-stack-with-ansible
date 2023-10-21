@@ -1,0 +1,7 @@
+---
+ServiceName: "node_exporter"
+UserID: "node_exporter"
+GroupID: "node_exporter"
+exec_command: /usr/local/bin/node_exporter
+version: 1.6.1
+node_exporter_port: 9100/tcp

@@ -1,0 +1,7 @@
+---
+ServiceName: "prometheus"
+UserID: "prometheus"
+GroupID: "prometheus"
+exec_command: "/usr/local/bin/prometheus --config.file=/etc/prometheus/prometheus.conf --storage.tsdb.path=/data/prometheus --storage.tsdb.retention=2d"
+version: "2.47.2"
+prometheus_port: "9090/tcp"

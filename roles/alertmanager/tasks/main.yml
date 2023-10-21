@@ -1,0 +1,88 @@
+---
+- name: Creating AlertManager user group
+  group: 
+    name: "{{ GroupID }}"
+
+- name: Creating AlertManager user
+  user:
+    name: "{{ UserID }}"
+    group: "{{ GroupID }}"
+    system: yes
+    shell: "/sbin/nologin"
+    comment: "{{ UserID }} nologin User"
+    createhome: "no"
+    state: present
+
+- name: Download AlertManager
+  unarchive:
+    src: "https://github.com/prometheus/alertmanager/releases/download/v{{ version }}/alertmanager-{{ version }}.linux-amd64.tar.gz"
+    dest: /tmp/
+    remote_src: yes
+
+- name: Copy AlertManager executable to bin
+  copy:
+    src: "/tmp/alertmanager-{{ version }}.linux-amd64/alertmanager"
+    dest: "/usr/local/bin/alertmanager"
+    owner: "{{ UserID }}"
+    group: "{{ GroupID }}"
+    remote_src: yes
+    mode: 0755
+
+- name: Delete AlertManager tmp folder
+  file:
+    path: '/tmp/alertmanager-{{ version }}.linux-amd64'
+    state: absent
+
+- name: Creates data directory
+  file: 
+    path: "/data/alertmanager/"
+    state: directory
+    owner: "{{ UserID }}"
+    group: "{{ GroupID }}"
+    mode: 0755
+
+- name: Creates config directory
+  file: 
+    path: "/etc/alertmanager/"
+    state: directory
+    owner: "{{ UserID }}"
+    group: "{{ GroupID }}"
+    mode: 0755
+
+- name: Copy config file
+  copy:
+    src: "{{ role_path }}/files/alertmanager.yml"
+    dest: /etc/alertmanager/alertmanager.yml
+
+- name: Copy systemd init file
+  template:
+    src: ../templates/init.service.j2
+    dest: /etc/systemd/system/alertmanager.service
+  notify: systemd_reload
+
+- name: Start firewalld service if not started
+  service:
+    name: firewalld
+    state: started
+    enabled: yes
+
+- name: Permit traffic on port {{ alertmanager_port }}
+  ansible.posix.firewalld:
+    port: "{{ alertmanager_port }}"
+    permanent: true
+    state: enabled
+    immediate: true
+  notify: reload_firewalld
+
+- name: Start alertmanager service
+  service:
+    name: alertmanager
+    state: started
+    enabled: yes
+
+- name: Check if alertmanager is accessible
+  uri:
+    url: http://localhost:9093
+    method: GET
+    status_code: 200
+...
