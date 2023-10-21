@@ -4,7 +4,7 @@
   vars:
     - role_path: /home/ali/monitoring_tools_setup/roles/alertmanager
   roles:
-    - roles/alertmanager
+    - roles/alertmanage
 
 - hosts: node_exporter
   become: yes
