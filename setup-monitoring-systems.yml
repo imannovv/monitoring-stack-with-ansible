@@ -2,7 +2,7 @@
 - hosts: alertmanager
   become: yes
   vars:
-    - role_path: /home/ali/monitoring_tools_setup/roles/alertmanager
+    - role_path: /home/ali/monitoring-stack-with-ansible/roles/alertmanager
   roles:
     - roles/alertmanager
 
