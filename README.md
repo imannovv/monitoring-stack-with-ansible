@@ -27,16 +27,16 @@ After changing ansible.cfg and inventory files, Run setup-monitoring-systems.yml
 Images from Project
 -------
 
-#### Prometheus
+**Prometheus**
 ![Image](images/prometheus.png)
 ---
-#### Grafana
+**Grafana**
 ![Image](images/grafana.png)
 ---
-#### Alert Manager
+**Alert Manager**
 ![Image](images/alert_manager.png)
 ---
-#### Node Exporter
+**Node Exporter**
 ![Image](images/node_exporter_metrics.png)
 
 
