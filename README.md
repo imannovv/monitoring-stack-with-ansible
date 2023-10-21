@@ -19,9 +19,9 @@ Dependencies will downloaded and ready in "collections" section.
 Example Playbook
 ----------------
 
-After changing ansible.cfg and inventory files, Run lamp.yml file to start the Setup of the Monitoring Systems
+After changing ansible.cfg and inventory files, Run setup-monitoring-systems.yml file to start the Setup of the Monitoring Systems
 
-    ansible-playbook lamp.yml
+    ansible-playbook setup-monitoring-systems.yml
 
 
 Images from Project
