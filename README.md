@@ -27,7 +27,7 @@ After changing ansible.cfg and inventory files, Run setup-monitoring-systems.yml
 Images from Project
 -------
 
-**`Prometheus`**
+####**`Prometheus`**
 
 ![Image](images/prometheus.png)
 ---
