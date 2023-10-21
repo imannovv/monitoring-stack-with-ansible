@@ -31,15 +31,15 @@ Images from Project
 
 ![Image](images/prometheus.png)
 ---
-**Grafana**
+### Grafana
 
 ![Image](images/grafana.png)
 ---
-**Alert Manager**
+### Alert Manager
 
 ![Image](images/alert_manager.png)
 ---
-**Node Exporter**
+### Node Exporter
 
 ![Image](images/node_exporter_metrics.png)
 
