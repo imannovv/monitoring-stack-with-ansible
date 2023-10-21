@@ -1,4 +1,4 @@
-### Setup Monitoring Systems (Prometheus, Alertmanager, Grafana, Node Exporter) with Ansible Automation
+Setup Monitoring Systems (Prometheus, Alertmanager, Grafana, Node Exporter) with Ansible Automation
 =========
 
 ![Image](images/ansible.png)
