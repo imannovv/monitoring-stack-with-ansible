@@ -11,10 +11,16 @@ Requirements
 
 Minimum 2 or 3 managed nodes(in my case CentOS7) and 1 Ansible Control node
 
-Dependencies
+Installing this collection
 ------------
 
-Dependencies will downloaded and ready in "collections" section.
+You can install the ansible.posix collection with the Ansible Galaxy CLI:
+
+    ansible-galaxy collection install ansible.posix
+
+You can also download a `requirements.yml` file and install it with:
+
+    ansible-galaxy collection install -r requirements.yml
 
 Example Playbook
 ----------------
